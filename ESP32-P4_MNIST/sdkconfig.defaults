@@ -1,0 +1,57 @@
+# Target chip
+CONFIG_IDF_TARGET="esp32p4"
+
+# No reboot after panic
+CONFIG_ESP_SYSTEM_PANIC_PRINT_HALT=y
+
+# CPU clock at maximum 400 MHz, but unfortunately it only reaches 360 MHz
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_400=y
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ=400
+
+# Compiler optimization
+CONFIG_COMPILER_OPTIMIZATION_PERF=y
+
+# Increase main task stack size
+# C++ and esp-dl need a lot of stack space during initialization
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=32768
+
+# Relax watchdog timeout
+# In case an inference takes longer, the chip should not reset
+CONFIG_ESP_TASK_WDT_TIMEOUT_S=10
+
+# C++ settings (optional, but good for esp-dl)
+CONFIG_COMPILER_CXX_EXCEPTIONS=y
+
+# Custom partition table (app needs >1 MB due to esp-dl)
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+
+# Flash size (Elecrow P4 has 16 MB)
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE="16MB"
+
+# PSRAM (external memory)
+# esp-dl needs significantly more RAM than internal SRAM provides
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_SPEED_200M=y
+CONFIG_SPIRAM_XIP_FROM_PSRAM=y
+CONFIG_SPIRAM_USE_CAPS_ALLOC=y
+
+# --- Cache ---
+CONFIG_CACHE_L2_CACHE_256KB=y
+CONFIG_CACHE_L2_CACHE_SIZE=0x40000
+CONFIG_CACHE_L2_CACHE_LINE_128B=y
+CONFIG_CACHE_L2_CACHE_LINE_SIZE=128
+CONFIG_CACHE_L1_CACHE_LINE_SIZE=64
+
+# --- Experimental features (required for ESP32-P4 MIPI DSI) ---
+CONFIG_IDF_EXPERIMENTAL_FEATURES=y
+
+# --- LVGL Configuration ---
+CONFIG_LV_COLOR_SCREEN_TRANSP=y
+CONFIG_LV_MEM_CUSTOM=y
+CONFIG_LV_MEMCPY_MEMSET_STD=y
+CONFIG_LV_DISP_DEF_REFR_PERIOD=15
+CONFIG_LV_ATTRIBUTE_FAST_MEM_USE_IRAM=y
+CONFIG_LV_FONT_MONTSERRAT_20=y
+CONFIG_LV_FONT_MONTSERRAT_24=y

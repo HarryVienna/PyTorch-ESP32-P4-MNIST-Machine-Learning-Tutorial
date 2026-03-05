@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+.venv
+build/
+managed_components/
+sdkconfig.old
+
+Python_MNIST/mnist_data/
+Python_MNIST/output_models/mnist_advanced_cnn.info
+Python_MNIST/output_models/mnist_advanced_cnn.espdl.json
+Python_MNIST/output_models/mnist_advanced.onnx
+Python_MNIST/output_models/mnist_advanced.onnx.data
