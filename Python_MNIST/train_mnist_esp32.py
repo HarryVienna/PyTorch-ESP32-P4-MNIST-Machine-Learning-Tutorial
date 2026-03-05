@@ -15,7 +15,7 @@ MODEL_TYPE = "advanced"
 
 BATCH_SIZE = 64
 LEARNING_RATE = 0.001
-EPOCHS = 1
+EPOCHS = 29
 
 # Folder for MNIST
 MNIST_DATA_PATH = "./mnist_data"
