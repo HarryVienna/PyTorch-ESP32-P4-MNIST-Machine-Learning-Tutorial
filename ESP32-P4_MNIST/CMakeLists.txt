@@ -9,6 +9,6 @@ include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 # GCC 14.2 false-positive stringop-overflow in esp-dl with -O2
 idf_build_set_property(COMPILE_OPTIONS "-Wno-stringop-overflow" APPEND)
 
-project(LVGL-HelloWorld)
+project(LVGL-MNIST)
 
 spiffs_create_partition_image(model spiffs FLASH_IN_PROJECT)
