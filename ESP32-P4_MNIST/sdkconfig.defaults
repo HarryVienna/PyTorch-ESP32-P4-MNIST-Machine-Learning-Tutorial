@@ -1,6 +1,11 @@
 # Target chip
 CONFIG_IDF_TARGET="esp32p4"
 
+# Chip revision: the board uses ESP32-P4 rev. v1.x
+# Since ESP-IDF 5.5 the default is rev. >= v3.1, which refuses to flash on older chips
+CONFIG_ESP32P4_SELECTS_REV_LESS_V3=y
+CONFIG_ESP32P4_REV_MIN_1=y
+
 # No reboot after panic
 CONFIG_ESP_SYSTEM_PANIC_PRINT_HALT=y
 
